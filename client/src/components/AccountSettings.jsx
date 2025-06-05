@@ -107,13 +107,33 @@ const UserDetails = styled.div`
   width: 337px;
   height: 63px;
 `
+const LogoutButton = styled.button`
+  width: 30%;
+  height: 30px;
+  background:rgb(231, 90, 74);
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+
+  &:hover {
+    transform: translateY(-0.5px);
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
+`
 
 const DashedLine = styled.div`
   border-top: 2px dashed rgb(217, 218, 219);
   margin: 10px 0;
 `;
 
-function AccountSettings({user }) {
+function AccountSettings({user, onLogout }) {
   if (!user) {
     return (
       <Container>
@@ -140,11 +160,13 @@ function AccountSettings({user }) {
         <ProfileInfo>
           <ProfileName>{user.fullName}</ProfileName>
           <ProfileEmail>{user.email}</ProfileEmail>
+          <LogoutButton onClick={onLogout}>Logout</LogoutButton>
         </ProfileInfo>
       </ProfileSection>
       <UserDetails>
         Lorem Ipsum Dolor Sit Amet, Consetetur Sadipscing Elitr, Sed Diam Nonumy Eirmod Tempor Invidunt Ut Labore Et Dolore Magna Aliquyam Erat, Sed Diam
       </UserDetails>
+
       <DashedLine />
     </Container>
   )
