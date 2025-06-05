@@ -50,7 +50,7 @@ function App() {
     }
   }, [])
 
-  let url = "http://localhost:5000/"
+  let url = "https://educase-ixns.onrender.com"
 
   const verifyToken = async (token) => {
     try {

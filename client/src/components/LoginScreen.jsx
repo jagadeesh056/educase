@@ -104,7 +104,7 @@ function LoginScreen({onLogin }) {
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState("")
 
-  let url = "http://localhost:5000"
+  let url = "https://educase-ixns.onrender.com"
 
   const handleLogin = async () => {
     if (!email || !password) {

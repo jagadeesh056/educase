@@ -147,7 +147,7 @@ function RegisterScreen({ onLogin }) {
     }))
   }
 
-  let url = "http://localhost:5000"
+  let url = "https://educase-ixns.onrender.com"
 
   const handleCreateAccount = async () => {
     if (!formData.fullName || !formData.phoneNumber || !formData.email || !formData.password) {
