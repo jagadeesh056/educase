@@ -1,5 +1,3 @@
-"use client"
-
 import { useState, useEffect } from "react"
 import styled from "styled-components"
 import WelcomeScreen from "./components/WelcomeScreen"
@@ -10,7 +8,7 @@ import axios from "axios"
 
 const AppContainer = styled.div`
   min-height: 100vh;
-  background-color: #f5f5f5;
+  background-color: white;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -22,9 +20,8 @@ const MobileContainer = styled.div`
   width: 100%;
   max-width: 375px;
   min-height: 600px;
-  background-color: white;
-  border-radius: 20px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  background-color: #F7F8F9;
+  border: 1px solid rgb(213, 215, 218);
   overflow: hidden;
   position: relative;
 `
@@ -44,7 +41,6 @@ function App() {
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
-    // Check for existing token on app load
     const token = localStorage.getItem("popx_token")
 
     if (token) {

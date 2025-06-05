@@ -2,42 +2,45 @@
 import styled from "styled-components"
 
 const Container = styled.div`
-  padding: 60px 40px;
-  text-align: center;
+  padding: 20px 20px;
   height: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  justify-content: flex-end;
+  align-items: flex-start;
   min-height: 600px;
+  font: normal normal medium 28px/36px Rubik;
 `
 
 const Title = styled.h1`
   font-size: 28px;
-  font-weight: 600;
-  color: #333;
+  font-weight: bold;
+  color: #1D2226;
   margin-bottom: 16px;
   line-height: 1.2;
+  opacity: 1;
+  text-align: left;
 `
 
 const Description = styled.p`
   font-size: 16px;
-  color: #666;
-  line-height: 1.4;
-  margin-bottom: 60px;
+  color: #1D2226;
+  margin-bottom: 15px;
   max-width: 280px;
+  opacity: 0.6;
+  text-align: left;
 `
 
 const PrimaryButton = styled.button`
-  width: 100%;
-  max-width: 280px;
-  height: 50px;
-  background: linear-gradient(135deg, #6c5ce7 0%, #a29bfe 100%);
+  width: 335px;
+  height: 46px;
+  background-color: #6C25FF;
   color: white;
   border: none;
-  border-radius: 8px;
+  border-radius: 6px;
   font-size: 16px;
-  font-weight: 500;
+  font-weight: bold;
+  opacity: 1;
   cursor: pointer;
   margin-bottom: 16px;
   transition: all 0.2s ease;
@@ -53,15 +56,14 @@ const PrimaryButton = styled.button`
 `
 
 const SecondaryButton = styled.button`
-  width: 100%;
-  max-width: 280px;
-  height: 50px;
-  background: #e8e6ff;
-  color: #6c5ce7;
+  width: 335px;
+  height: 46px;
+  background: #6C25FF4B;
+  color: #1D2226;
   border: none;
-  border-radius: 8px;
+  border-radius: 6px;
   font-size: 16px;
-  font-weight: 500;
+  font-weight: bold;
   cursor: pointer;
   transition: all 0.2s ease;
 

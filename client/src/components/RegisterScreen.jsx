@@ -5,54 +5,69 @@ import styled from "styled-components"
 import axios from "axios"
 
 const Container = styled.div`
-  padding: 40px;
+  padding: 40px 20px;
   height: 100%;
   min-height: 600px;
   overflow-y: auto;
 `
 
 const Title = styled.h1`
-  font-size: 24px;
-  font-weight: 600;
-  color: #333;
-  margin-bottom: 30px;
-  line-height: 1.2;
+  height: 69px;
+  width: 188px;
+  font-size: 28px;
+  font-weight: bold;
+  text-align: left;
+  font: normal normal medium 28px/36px Rubik;
+  letter-spacing: 0px;
+  color: #1D2226;
+  opacity: 1;
+  margin-bottom: 25px;
 `
 
 const FormGroup = styled.div`
   margin-bottom: 20px;
 `
 
-const Label = styled.label`
-  display: block;
-  font-size: 14px;
-  color: #6c5ce7;
-  margin-bottom: 8px;
-  font-weight: 500;
+const InputWrapper = styled.div`
+  position: relative;
+  width: 335px;
+  margin-bottom: 24px;
 `
 
-const Input = styled.input`
-  width: 100%;
-  height: 48px;
-  border: 1px solid #e0e0e0;
-  border-radius: 8px;
+const StyledLabel = styled.label`
+  position: absolute;
+  top: -8px;
+  left: 12px;
+  background-color: #f8f9fa;
+  padding: 0 4px;
+  font-size: 13px;
+  color: #6C25FF;
+  font-weight: 500;
+  z-index: 1;
+`
+
+const StyledInput = styled.input`
+  width: 335px;
+  height: 40px;
+  border: 1px solid #CBCBCB;
+  border-radius: 6px;
+  opacity: 1;
   padding: 0 16px;
   font-size: 16px;
-  color: #333;
   background: #f8f9fa;
   transition: all 0.2s ease;
   box-sizing: border-box;
 
   &:focus {
     outline: none;
-    border-color: #6c5ce7;
     background: white;
   }
 
   &::placeholder {
     color: #999;
   }
-`
+`;
+
 
 const RadioGroup = styled.div`
   margin-top: 20px;
@@ -85,20 +100,20 @@ const RadioInput = styled.input`
 `
 
 const CreateButton = styled.button`
-  width: 100%;
-  height: 50px;
-  background: ${(props) => (props.disabled ? "#b0b0b0" : "linear-gradient(135deg, #6c5ce7 0%, #a29bfe 100%)")};
+  width: 335px;
+  height: 46px;
+ background: #6C25FF 0% 0% no-repeat padding-box;
+  border-radius: 6px;
+  opacity: 1;
   color: white;
   border: none;
-  border-radius: 8px;
   font-size: 16px;
-  font-weight: 500;
+  font-weight: bold;
   cursor: ${(props) => (props.disabled ? "not-allowed" : "pointer")};
   transition: all 0.2s ease;
 
   &:hover {
     transform: ${(props) => (props.disabled ? "none" : "translateY(-1px)")};
-    box-shadow: ${(props) => (props.disabled ? "none" : "0 4px 12px rgba(108, 92, 231, 0.3)")};
   }
 
   &:active {
@@ -113,20 +128,7 @@ const ErrorMessage = styled.div`
   text-align: center;
 `
 
-const BackButton = styled.button`
-  background: none;
-  border: none;
-  color: #6c5ce7;
-  font-size: 14px;
-  cursor: pointer;
-  margin-bottom: 20px;
-  
-  &:hover {
-    text-decoration: underline;
-  }
-`
-
-function RegisterScreen({ onNavigate, onLogin }) {
+function RegisterScreen({ onLogin }) {
   const [formData, setFormData] = useState({
     fullName: "",
     phoneNumber: "",
@@ -173,62 +175,69 @@ function RegisterScreen({ onNavigate, onLogin }) {
 
   return (
     <Container>
-      <BackButton onClick={() => onNavigate("welcome")}>← Back</BackButton>
-
-      <Title>Create your PopX account</Title>
-
+      <Title>Create your <br /> PopX account</Title>
       <FormGroup>
-        <Label>Full Name*</Label>
-        <Input
-          type="text"
-          placeholder="Enter your full name"
-          value={formData.fullName}
-          onChange={(e) => handleInputChange("fullName", e.target.value)}
-        />
+        <InputWrapper>
+          <StyledLabel>Full Name<span style={{color: "red"}}>*</span></StyledLabel>
+          <StyledInput
+            type="text"
+            placeholder="Enter your full name"
+            value={formData.fullName}
+            onChange={(e) => handleInputChange("fullName", e.target.value)}
+          />
+        </InputWrapper>
       </FormGroup>
 
       <FormGroup>
-        <Label>Phone number*</Label>
-        <Input
-          type="tel"
-          placeholder="Enter your phone number"
-          value={formData.phoneNumber}
-          onChange={(e) => handleInputChange("phoneNumber", e.target.value)}
-        />
+        <InputWrapper>
+          <StyledLabel>Phone number<span style={{color: "red"}}>*</span></StyledLabel>
+          <StyledInput
+            type="tel"
+            placeholder="Enter your phone number"
+            value={formData.phoneNumber}
+            onChange={(e) => handleInputChange("phoneNumber", e.target.value)}
+          />
+        </InputWrapper>
       </FormGroup>
 
       <FormGroup>
-        <Label>Email address*</Label>
-        <Input
-          type="email"
-          placeholder="Enter your email address"
-          value={formData.email}
-          onChange={(e) => handleInputChange("email", e.target.value)}
-        />
+        <InputWrapper>  
+          <StyledLabel>Email address<span style={{color: "red"}}>*</span></StyledLabel>
+          <StyledInput
+            type="email"
+            placeholder="Enter your email address"
+            value={formData.email}
+            onChange={(e) => handleInputChange("email", e.target.value)}
+          />
+        </InputWrapper>
       </FormGroup>
 
       <FormGroup>
-        <Label>Password *</Label>
-        <Input
-          type="password"
-          placeholder="Enter your password"
-          value={formData.password}
-          onChange={(e) => handleInputChange("password", e.target.value)}
-        />
+        <InputWrapper>                         
+          <StyledLabel>Password <span style={{color: "red"}}>*</span></StyledLabel>
+          <StyledInput
+            type="password"
+            placeholder="Enter your password"
+            value={formData.password}
+            onChange={(e) => handleInputChange("password", e.target.value)}
+          />
+         </InputWrapper>
       </FormGroup>
 
       <FormGroup>
-        <Label>Company name</Label>
-        <Input
-          type="text"
-          placeholder="Enter your company name"
-          value={formData.companyName}
-          onChange={(e) => handleInputChange("companyName", e.target.value)}
-        />
+        <InputWrapper>
+          <StyledLabel>Company name<span style={{color: "red"}}>*</span></StyledLabel>
+          <StyledInput
+            type="text"
+            placeholder="Enter your company name"
+            value={formData.companyName}
+            onChange={(e) => handleInputChange("companyName", e.target.value)}
+          />
+        </InputWrapper>
       </FormGroup>
 
       <RadioGroup>
-        <RadioLabel>Are you an Agency?*</RadioLabel>
+        <RadioLabel>Are you an Agency?<span style={{color: "red"}}>*</span></RadioLabel>
         <RadioContainer>
           <RadioOption>
             <RadioInput

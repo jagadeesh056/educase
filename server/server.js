@@ -86,16 +86,13 @@ app.post("/api/auth/register", async (req, res) => {
       return res.status(400).json({ error: "Missing required fields" })
     }
 
-    // Check if user already exists
     const existingUser = await User.findOne({ email })
     if (existingUser) {
       return res.status(400).json({ error: "User already exists" })
     }
 
-    // Hash password
     const hashedPassword = await hashPassword(password)
 
-    // Create user
     const user = new User({
       fullName,
       phoneNumber,
@@ -107,7 +104,6 @@ app.post("/api/auth/register", async (req, res) => {
 
     await user.save()
 
-    // Generate token
     const token = generateToken(user._id.toString())
 
     res.json({
@@ -137,19 +133,16 @@ app.post("/api/auth/login", async (req, res) => {
       return res.status(400).json({ error: "Email and password are required" })
     }
 
-    // Find user
     const user = await User.findOne({ email })
     if (!user) {
       return res.status(401).json({ error: "Invalid credentials" })
     }
 
-    // Verify password
     const isValidPassword = await verifyPassword(password, user.password)
     if (!isValidPassword) {
       return res.status(401).json({ error: "Invalid credentials" })
     }
 
-    // Generate token
     const token = generateToken(user._id.toString())
 
     res.json({
